@@ -33,6 +33,7 @@ exports.handleSignup = async (req, res) => {
       email,
       password: hashedPassword,
       verifytoken,
+      isActive: true
     });
 
     await user.save();
