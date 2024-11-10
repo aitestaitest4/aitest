@@ -8,7 +8,6 @@ const {
   handleLogout,
   verifyAccount,
 } = require("../controllers/authController");
-const stripeRoutes = require("./stripeRoute");
 const cashfreeRoutes = require("./cashfreeRoutes");
 const validateJWT = require("../middleware/authMiddleware");
 const validateRole = require("../middleware/roleMiddleware");
@@ -79,9 +78,6 @@ router.post("/plagiarism/send-email", plagiarismController.sendEmailApi);
 
 router.post("/image-upscale", plagiarismController.limewireImageUpscale);
 
-// ----------------- Stripe Routes ----------------- //
-
-router.use("/stripe", stripeRoutes);
 
 // ----------------- Cashfree Routes ----------------- //
 
