@@ -1,4 +1,4 @@
-const textToSpeech = require("@google-cloud/text-to-speech");
+const { TextToSpeechClient } = require("@google-cloud/text-to-speech");
 const { createResponse } = require("../services/responseService");
 
 exports.convertTextToAudio = async (req, res) => {
@@ -10,7 +10,10 @@ exports.convertTextToAudio = async (req, res) => {
         .json(createResponse(400, null, "No text provided for synthesis."));
     }
 
-    const client = new textToSpeech.TextToSpeechClient();
+    // Initialize client with credentials from environment variable
+    const client = new TextToSpeechClient({
+      credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS),
+    });
 
     let voiceConfig;
     if (languageType === "english-male") {
