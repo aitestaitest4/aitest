@@ -12,7 +12,7 @@ exports.convertTextToAudio = async (req, res) => {
 
     // Initialize client with credentials from environment variable
     const client = new TextToSpeechClient({
-      credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS),
+      credentials: process.env.GOOGLE_APPLICATION_CREDENTIALS,
     });
 
     let voiceConfig;
